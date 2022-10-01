@@ -10,4 +10,8 @@ cqrs-es ="0.4.0"
 async-trait = "0.1.52"
 serde = { version = "1.0", features = ["derive"]}
 tokio = { version = "1", features = ["full"] }
-postgres = "0.19.4"
+postgres-es = "0.4.5"
+tower = "0.4"
+tower-http = "0.3"
+chrono = "0.4"
+axum = "0.5"
