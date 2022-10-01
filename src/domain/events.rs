@@ -55,3 +55,17 @@ impl Display for BankAccountError {
 }
 
 impl std::error::Error for BankAccountError {}
+pub struct AtmError;
+pub struct CheckingError;
+
+pub struct BankAccountService;
+
+impl BankAccountService {
+    async fn atm_withdrawal(&self, atm_id: &str, amount: f64) -> Result<(), AtmError> {
+        Ok(())        
+    }
+
+    async fn validate_check(&self, account: &str, check: &str) -> Result<(), CheckingError> {
+        Ok(())
+    }
+}
