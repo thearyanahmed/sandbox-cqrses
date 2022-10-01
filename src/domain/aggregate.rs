@@ -32,6 +32,11 @@ impl Aggregate for BankAccount {
             },
             BankAccountCommand::WithdrawMoney { amount, atm_id : _ } => {
                 let balance = self.balance - amount;
+
+                if balance < 0_f64 {
+                    return Err(BankAccountError::from("insufficient fund"))
+                }
+
                 Ok(vec![
                     BankAccountEvent::CustomerWithdrewCash { amount, balance }
                 ])
@@ -80,7 +85,7 @@ mod aggregate_tests {
 
     use crate::domain::aggregate::BankAccount;
     use crate::domain::commands::BankAccountCommand;
-    use crate::domain::events::BankAccountEvent;
+    use crate::domain::events::{BankAccountError, BankAccountEvent};
     use crate::services::{BankAccountServices};
 
     #[test]
@@ -126,5 +131,13 @@ mod aggregate_tests {
             .given(vec![previous])
             .when(command)
             .then_expect_events(vec![expected]);
+    }
+
+    #[test]
+    fn test_withdraw_money_when_fund_is_not_available() {
+        AccountTestFramework::with(BankAccountServices)
+            .given_no_previous_events()
+            .when(BankAccountCommand::WithdrawMoney { amount: 200.0, atm_id: "".to_string() })
+            .then_expect_error_message("insufficient fund");
     }
 }

@@ -39,7 +39,9 @@ impl DomainEvent for BankAccountEvent {
     }
 }
 
-#[derive(Debug)]
+
+
+#[derive(Debug, PartialEq)]
 pub struct BankAccountError(String);
 
 impl From<&str> for BankAccountError {
