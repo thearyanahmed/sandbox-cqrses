@@ -1,5 +1,6 @@
 mod domain;
 
 fn main() {
-    println!("Hello, world!");
+    let s = String::from("hello world");
+    println!("{}", s);
 }
