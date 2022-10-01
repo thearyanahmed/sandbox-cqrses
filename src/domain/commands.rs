@@ -5,7 +5,7 @@ pub enum BankAccountCommand {
     OpenAcount {
         account_id: String, 
     },
-    DepositeMoney {
+    DepositMoney {
         amount: f64,
     },
     WithdrawMoney {
