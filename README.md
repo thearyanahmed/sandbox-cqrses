@@ -2,7 +2,7 @@
 
 > This is a sandbox project. It is the implementation after reading https://doc.rust-cqrs.org/ 
 
-> Also, this is an unfinished project. This was only for the learning purpose.
+> Also, this is an unfinished project. This was only for learning purpose.
 
 
 Command-Query Responsibility Segregation (CQRS) and event sourcing are patterns that enable many of the concepts behind Domain Driven Design. All of these tools are designed to provide a great deal of flexibility for applications that have complex or rapidly changing business rules.
